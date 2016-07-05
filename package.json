@@ -1,0 +1,48 @@
+{
+  "name": "commute-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dist": "gulp dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://akinsella@git@github.com:commute/commute-api.git"
+  },
+  "homepage": "https://github.com/akinsella/commute-sync",
+  "bugs": "https://github.com/akinsella/commute-sync/issues",
+  "author": "Alexis Kinsella <alexis.kinsella@gmail.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.14.0",
+    "lodash": "^4.13.1",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.14.1",
+    "recluster": "^0.4.5",
+    "redis": "^2.6.2",
+    "uuid": "^2.0.2",
+    "winston": "^2.2.0"
+  },
+  "engines": {
+    "nodejs": "^6.2.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "del": "^2.2.0",
+    "fakeredis": "^1.0.3",
+    "gulp": "^3.9.1",
+    "gulp-install": "^0.6.0",
+    "gulp-zip": "^3.2.0",
+    "mocha": "^2.5.3",
+    "run-sequence": "^1.1.5",
+    "sinon": "^1.17.4"
+  },
+  "files": [
+    "index.js",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ]
+}
