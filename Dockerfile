@@ -20,6 +20,7 @@ RUN npm install -g gulp
 RUN npm install --production
 
 COPY index.js /src
+COPY conf /src/conf
 COPY lib /src/lib
 
 # Add `node_modules/.bin` to $PATH
