@@ -5,10 +5,6 @@ const requestLogger = require('./lib/requestLogger');
 
 app.use(requestLogger());
 
-app.get('/', function (req, res) {
-    res.send('Hello World!');
-});
-
 app.get('/stations/nearby', function (req, res) {
 
     const city = req.query.city;
@@ -24,6 +20,8 @@ app.get('/stations/nearby', function (req, res) {
 
 });
 
-app.listen(3000, function () {
+var httpPort = process.env.HTTP_PORT || 3000;
+
+app.listen(httpPort, function () {
     console.log('Example app listening on port 3000!');
 });
