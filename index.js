@@ -23,5 +23,5 @@ app.get('/stations/nearby', function (req, res) {
 var httpPort = process.env.HTTP_PORT || 3000;
 
 app.listen(httpPort, function () {
-    console.log('Example app listening on port 3000!');
+    console.log('Commute API listening on port 3000!');
 });
