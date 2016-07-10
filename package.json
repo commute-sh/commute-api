@@ -16,6 +16,7 @@
   "author": "Alexis Kinsella <alexis.kinsella@gmail.com>",
   "license": "Apache-2.0",
   "dependencies": {
+    "bluebird": "^3.4.1",
     "express": "^4.14.0",
     "lodash": "^4.13.1",
     "mkdirp": "^0.5.1",
