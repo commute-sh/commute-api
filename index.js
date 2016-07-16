@@ -6,6 +6,7 @@ const requestLogger = require('./lib/requestLogger');
 app.use(requestLogger());
 
 app.get('/stations/nearby', function (req, res) {
+    const start = moment();
 
     const city = req.query.city;
     const lat = Number(req.query.lat);
@@ -14,6 +15,11 @@ app.get('/stations/nearby', function (req, res) {
 
     stationService.neaby(city, lat, lng, distance).then((stations) => {
         res.status(200).json(stations);
+
+        const duration = moment.duration(moment().diff(start)).milliseconds();
+
+        console.log("*** Station provided in", duration, "ms");
+
     }).catch((err) => {
         res.status(500).json({ message: err.message });
     });
