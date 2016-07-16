@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const stationService = require('./lib/stationService');
 const requestLogger = require('./lib/requestLogger');
+const moment = require('moment');
 
 app.use(requestLogger());
 
