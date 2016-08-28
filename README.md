@@ -6,7 +6,7 @@ Docker build
 ------------
 
 ```
-    docker build -t commute-api .
+    docker build -t commute/commute-api .
 ```
 
 
@@ -14,7 +14,7 @@ Docker run
 ----------
 
 ```
-     docker run -e "CITY=<City>" -e "API_KEY=<API_KEY>" -e "DB_HOST=<DB_HOST>" --rm --name commute-api commute-api
+     docker run -e "CITY=<City>" -e "API_KEY=<API_KEY>" -e "DB_HOST=<DB_HOST>" --rm --name commute/commute-api commute-api
 ```
 
 
@@ -22,7 +22,7 @@ Docker run into Bash
 --------------------
 
 ```
-     docker run -e "CITY=<City>" -e "API_KEY=<API_KEY>" -e "DB_HOST=<DB_HOST>" --rm -it --name commute-api commute-api bash
+     docker run -e "CITY=<City>" -e "API_KEY=<API_KEY>" -e "DB_HOST=<DB_HOST>" --rm -it --name commute/commute-api commute-api bash
 ```
 
 Docker logs

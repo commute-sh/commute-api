@@ -9,12 +9,12 @@ app.use(requestLogger());
 app.get('/stations/nearby', function (req, res) {
     const start = moment();
 
-    const city = req.query.city;
+    const city = 'Paris';
     const lat = Number(req.query.lat);
     const lng = Number(req.query.lng);
     const distance = Number(req.query.distance || '5000');
 
-    stationService.neaby(city, lat, lng, distance).then((stations) => {
+    stationService.nearby(city, lat, lng, distance).then((stations) => {
         res.status(200).json(stations);
 
         const duration = moment.duration(moment().diff(start)).milliseconds();
@@ -22,6 +22,28 @@ app.get('/stations/nearby', function (req, res) {
         console.log("*** Station provided in", duration, "ms");
 
     }).catch((err) => {
+        console.log('[ERROR]', err.message, ' - stack:', err.stack);
+        res.status(500).json({ message: err.message });
+    });
+
+});
+
+app.get('/stations/:contractName/:stationNumber/:date/data', function (req, res) {
+    const start = moment();
+
+    const contractName = req.params.contractName;
+    const date = moment(req.params.date, 'YYYYMMDD-HHmm');
+    const stationNumber = Number(req.params.stationNumber);
+
+    stationService.fetchInfluxDbDataByDateAndStationNumber(contractName, date, stationNumber, 60).then((stations) => {
+        res.status(200).json(stations);
+
+        const duration = moment.duration(moment().diff(start)).milliseconds();
+
+        console.log("*** Station provided in", duration, "ms");
+
+    }).catch((err) => {
+        console.log('[ERROR]', err.message, ' - stack:', err.stack);
         res.status(500).json({ message: err.message });
     });
 
