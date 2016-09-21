@@ -10,9 +10,9 @@ app.get('/stations', function (req, res) {
     const start = moment();
 
     const contractName = req.query.contract_name || 'Paris';
-    const ids = (req.query.ids || "").split(',');
+    const numbers = (req.query.numbers || "").split(',');
 
-    stationService.findByIds(contractName, ids).then((stations) => {
+    stationService.findByNumbers(contractName, numbers).then((stations) => {
         res.status(200).json(stations);
 
         const duration = moment.duration(moment().diff(start)).milliseconds();
