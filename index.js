@@ -7,12 +7,21 @@ const moment = require('moment');
 app.use(requestLogger());
 
 app.get('/stations', function (req, res) {
+
     const start = moment();
 
-    const contractName = req.query.contract_name || 'Paris';
-    const numbers = (req.query.numbers || "").split(',');
+    const contractName = req.query['contract-name'] || 'Paris';
+    const numbers = req.query.numbers ? req.query.numbers.split(',') : [];
 
-    stationService.findByNumbers(contractName, numbers).then((stations) => {
+    if (!contractName) {
+        res.status(400).json({ message: 'Query Param `contract-name` is mandatory' });
+        return ;
+    }
+
+    ( numbers.length === 0 ?
+        stationService.findByContractName(contractName) :
+        stationService.findByNumbers(contractName, numbers)
+    ).then((stations) => {
         res.status(200).json(stations);
 
         const duration = moment.duration(moment().diff(start)).milliseconds();
@@ -29,7 +38,7 @@ app.get('/stations', function (req, res) {
 app.get('/stations/nearby', function (req, res) {
     const start = moment();
 
-    const contractName = req.query.contract_name || 'Paris';
+    const contractName = req.query['contract-name'] || 'Paris';
     const lat = Number(req.query.lat);
     const lng = Number(req.query.lng);
     const distance = Number(req.query.distance || '5000');
