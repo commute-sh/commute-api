@@ -3,8 +3,10 @@ const app = express();
 const stationService = require('./lib/stationService');
 const requestLogger = require('./lib/requestLogger');
 const moment = require('moment');
+const responseTime = require('response-time')
 
 app.use(requestLogger());
+app.use(responseTime());
 
 app.get('/stations', function (req, res) {
 
