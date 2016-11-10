@@ -59,11 +59,12 @@ app.get('/stations/nearby', function (req, res) {
 
 });
 
-app.get('/stations/:contractName/:stationNumber/:date/data', function (req, res) {
+
+const stationAvailability = function (req, res) {
     const start = moment();
 
     const contractName = req.params.contractName;
-    const date = moment(req.params.date, 'YYYYMMDD-HHmm');
+    const date = req.params.date ? moment(req.params.date, 'YYYYMMDD-HHmm') : moment().subtract(1, 'days');
     const stationNumber = Number(req.params.stationNumber);
 
     stationService.fetchInfluxDbDataByDateAndStationNumber(contractName, date, stationNumber, 60).then((stations) => {
@@ -78,7 +79,11 @@ app.get('/stations/:contractName/:stationNumber/:date/data', function (req, res)
         res.status(500).json({ message: err.message });
     });
 
-});
+}
+
+app.get('/stations/:contractName/:stationNumber/availability/:date', stationAvailability);
+app.get('/stations/:contractName/:stationNumber/availability', stationAvailability);
+app.get('/stations/:contractName/:stationNumber/:date/data', stationAvailability);
 
 var httpPort = process.env.HTTP_PORT || 3000;
 
