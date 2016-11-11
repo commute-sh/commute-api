@@ -1,17 +1,17 @@
 language: node_js
 node_js:
-  - "6.1"
-
+- '6.1'
 env:
-  - CXX=g++-4.8
-
+- CXX=g++-4.8
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
+    - ubuntu-toolchain-r-test
     packages:
-      - g++-4.8
-
+    - g++-4.8
 cache:
   directories:
-    - node_modules
+  - node_modules
+notifications:
+  slack:
+    secure: KHxBgavxNAlI9yoW8SdKXlCvg0eFGRSvdLVw1bAqWtSobr4GEuJY1IX3W5fUOFXA+XAU4SuS7vzG2w1LMbjRAH+IREPvpSsFmLqyGG/ijkT5wNVZQKtvNDj6FDCuBWwsAqWEmxmsQOW8FQA862FAArlqzQl9GvUCNN1ZG4Mpuz/Z7qNIfRfhiUcmsMWEPm+GPJUUy7nh0yqCb8nc1/qfFrcnSGrDVjla/ieWmF887V0DDc1jggXM6OPROL5HlDNMTD2msSWD213jRRp6E9D5cpRwhcOxuvkjQNrdu1BLoe+RKaqYnNmeyfgndE7Uw5wt8pYB8HQxo1G1pJmptzQcHyxx3W9GH1xr68fjAh1/0H+NuK4g34DNnYvO0FbSJb9+0qDJ8rj+WIetkX9ck5sUuasNcK5U6CrH8O31FDue+bTmIy8OOhnE3xiIZYkzzlDtfHehMOteGNEPVQW081fo1jUlIXL3hCjpH5qHPfC/PsVc7z7XwcDENWrfuo9Hxay0xZnIO+MQERvqzyWM/z8hiMqMcsHUCOUfrxeuVsgS8VSNd0wUKNSp65WMVWo9D+8LuP17X+V9y74sl2lV9YhTGOY16twFUVqqr97yNJ+vCDO8nt5tcf4VwU29LKoukFQ4pSnHsrPXTDNEuF/JziCvsid8PN+n5/uWYU8GMjzDfF4=
