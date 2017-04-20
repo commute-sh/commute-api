@@ -18,7 +18,6 @@
   "dependencies": {
     "bluebird": "^3.4.1",
     "express": "^4.14.0",
-    "georedis": "^3.0.3",
     "influx": "^4.2.1",
     "knex": "^0.11.10",
     "lodash": "^4.13.1",
